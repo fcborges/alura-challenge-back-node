@@ -53,6 +53,48 @@ app.get('/filmes/all', async (req, res) => {
 
 })
 
+app.get('/read/:id', async (req, res) => {
+  try {
+    const filmeRef = db.collection("filmes").doc(req.params.id);
+    const response = await filmeRef.get();
+    res.send(response.data());
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+app.post('/update', async (req, res) => {
+  try {
+    const id = req.body.id;
+    const newTitulo = req.body.titulo;
+    const newDescricao = req.body.descricao;
+    const newUrl = req.body.url;
+    const newCategoria = req.body.categoria;
+
+    const filmesRef = db.collection("filmes").doc(id)
+      .update({
+        titulo: newTitulo,
+        descricao: newDescricao,
+        url: newUrl,
+        categoria: newCategoria
+      });
+    console.log("Atualizado com sucesso");
+    res.send(filmesRef);    
+  } catch (error) {
+    res.send(error);
+  }
+})
+
+app.delete('/delete/:id', async (req, res) => {
+  try {
+    const response = await db.collection("filmes").doc(req.params.id).delete(); 
+    console.log("Ddeletado com sucesso");
+    res.send(response);    
+  } catch (error) {
+    res.send(error);
+  }
+})
+
 const db = admin.firestore();
 const PORT = process.env.PORT || 3009;
 

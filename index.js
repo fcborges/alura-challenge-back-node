@@ -6,7 +6,7 @@ fs.initializeApp({
  credential: fs.credential.cert(serviceAccount)
 });
 
-const citiesRef = db.collection('filmes');
+const citiesRef = db.collection('videos');
 const snapshot = await citiesRef.where('capital', '==', true).get();
 if (snapshot.empty) {
   console.log('No matching documents.');
