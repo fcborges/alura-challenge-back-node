@@ -7,11 +7,17 @@ const conexao = mysql.createConnection({
     // password: 'wi8tvx0epq1948rb',
     // database: 'bghm1fgr0xbsqc3j'
 
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: 'admin',
-    database: 'alura'
+//     host: 'localhost',
+//     port: 3306,
+//     user: 'root',
+//     password: 'admin',
+//     database: 'alura'
+       //b62a8d0f372d0e@eu-cdbr-west-03.cleardb.net:3306
+       host: 'eu-cdbr-west-03.cleardb.net',
+       port: 3306,
+       user: 'b62a8d0f372d0e',
+       password: '61814751',
+       database: 'heroku_17258244a262dc1'
 
 })
 
