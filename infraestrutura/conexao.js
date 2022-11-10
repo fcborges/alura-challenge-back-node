@@ -17,7 +17,9 @@ const conexao = mysql.createConnection({
        port: 3306,
        user: 'b62a8d0f372d0e',
        password: '61814751',
-       database: 'heroku_17258244a262dc1'
+       database: 'heroku_17258244a262dc1',
+       connectionLimit : 5000,
+       debug : 'true'
 
 })
 
