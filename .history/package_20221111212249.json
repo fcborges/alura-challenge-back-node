@@ -1,0 +1,28 @@
+{
+  "name": "alura-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "ng":"ng",
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ng build --prod"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "consign": "^0.1.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "firebase": "^9.13.0",
+    "firebase-admin": "^11.2.0",
+    "moment": "^2.29.4",
+    "mongoose": "^6.2.6",
+    "mysql": "^2.18.1"
+  }
+}
