@@ -66,4 +66,4 @@ class Tabelas {
 
 }
 
-export default new Tabelas
+module.exports = new Tabelas

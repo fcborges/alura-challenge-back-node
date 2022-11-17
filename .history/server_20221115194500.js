@@ -1,15 +1,71 @@
-const express = require("express");
+// import app from './src/app.js'
+
+// const port = process.env.PORT || 3008;
+
+
+// app.listen(port, () => {
+//   console.log(`Servidor escutando em http://localhost:${port}`)
+// })
+
+import express from 'express';
+import admin from "firebase-admin";
+import credentials from"./key.json" assert { type: 'json' };
 const app = express();
 
-const admin = require("firebase-admin");
-const credentials = require("./key.json");
+import Tabelas from "./infraestrutura/tabelas.js"
 
-admin.initializeApp({
-  credential: admin.credential.cert(credentials)
-});
+import { FireSQL } from 'firesql';
+// import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
+// import 'firebase/firestore';
+import 'firebase/compat/firestore';
+ 
+// firebase.initializeApp({ /* ... */ });
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(credentials)
+// });
+
+const dbRef = firebase.firestore();
+const docRef = firebase.firestore().doc('filmes');
+const fireSQL = new FireSQL(dbRef);
+
+admin.initializeApp();
+
+dbRef = admin.firestore();
+
+const firebaseConfig = {
+// config data
+};
+
+const firebase = require('firebase');
+
+firebase.initializeApp(firebaseConfig);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.get('/filmes', async (req, res) => {
+  // try {
+  //    const filmesRef = db.collection("filmes");
+  //    const response = await filmesRef.get();
+  //    let responseArr = [];
+  //    response.forEach(doc => {
+  //      responseArr.push(doc.data());
+  //    });
+  //   res.send(responseArr);
+  // } catch (error) {
+  //   res.send(error);
+  // }
+
+  fireSQL.query('SELECT * FROM filmes').then(documents => {
+    documents.forEach(doc => {
+      console.log("doc =>",doc);
+    });
+  });
+
+})
+
 
 app.post('/create', async (req, res) => {
   try {
@@ -41,6 +97,7 @@ app.get('/filmes/all', async (req, res) => {
   } catch (error) {
     res.send(error);
   }
+
 })
 
 app.get('/read/:id', async (req, res) => {

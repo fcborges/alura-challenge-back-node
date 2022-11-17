@@ -41,6 +41,7 @@ app.get('/filmes/all', async (req, res) => {
   } catch (error) {
     res.send(error);
   }
+
 })
 
 app.get('/read/:id', async (req, res) => {

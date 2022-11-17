@@ -3,6 +3,7 @@ const app = express();
 
 const admin = require("firebase-admin");
 const credentials = require("./key.json");
+const teste = require("server_teste.js");
 
 admin.initializeApp({
   credential: admin.credential.cert(credentials)
@@ -31,7 +32,8 @@ app.post('/create', async (req, res) => {
 
 app.get('/filmes/all', async (req, res) => {
   try {
-    const filmesRef = db.collection("filmes");
+   // const filmesRef = db.collection("filmes");
+    const filmesRef = 
     const response = await filmesRef.get();
     let responseArr = [];
     response.forEach(doc => {
@@ -41,6 +43,7 @@ app.get('/filmes/all', async (req, res) => {
   } catch (error) {
     res.send(error);
   }
+
 })
 
 app.get('/read/:id', async (req, res) => {

@@ -1,4 +1,13 @@
-const express = require("express");
+// import app from './src/app.js'
+
+// const port = process.env.PORT || 3008;
+
+
+// app.listen(port, () => {
+//   console.log(`Servidor escutando em http://localhost:${port}`)
+// })
+
+import express from 'express';
 const app = express();
 
 const admin = require("firebase-admin");
@@ -41,6 +50,7 @@ app.get('/filmes/all', async (req, res) => {
   } catch (error) {
     res.send(error);
   }
+
 })
 
 app.get('/read/:id', async (req, res) => {
