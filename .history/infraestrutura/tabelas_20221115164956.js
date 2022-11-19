@@ -11,7 +11,7 @@ class Tabelas {
     criarFilmes() {
         const dbRef = firebase.firestore();
         const docRef = firebase.firestore().doc('filmes');
-        // const fireSQL = new FireSQL(dbRef);
+        const fireSQL = new FireSQL(dbRef);
         console.log("tabela filmes::",docRef);
     }
 
@@ -66,4 +66,4 @@ class Tabelas {
 
 }
 
-export default new Tabelas
+module.exports = new Tabelas

@@ -1,3 +1,12 @@
+// import app from './src/app.js'
+
+// const port = process.env.PORT || 3008;
+
+
+// app.listen(port, () => {
+//   console.log(`Servidor escutando em http://localhost:${port}`)
+// })
+
 const express = require("express");
 const app = express();
 
@@ -41,6 +50,7 @@ app.get('/filmes/all', async (req, res) => {
   } catch (error) {
     res.send(error);
   }
+
 })
 
 app.get('/read/:id', async (req, res) => {
@@ -78,7 +88,7 @@ app.post('/update', async (req, res) => {
 app.delete('/delete/:id', async (req, res) => {
   try {
     const response = await db.collection("filmes").doc(req.params.id).delete(); 
-    console.log("Ddeletado com sucesso");
+    console.log("Deletado com sucesso");
     res.send(response);    
   } catch (error) {
     res.send(error);
