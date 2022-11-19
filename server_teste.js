@@ -21,16 +21,17 @@ app.get('/filmes', async (req, res) => {
         const citiesPromise = fireSQL.query(`
         SELECT * FROM filmes 
       `);
-
+      let responseArr = [];
       citiesPromise.then(filmes => {
         for (const filme of filmes) {
-            console.log(
-                `${filme.id} in ${filme.titulo} has ${filme.descricao} descricao`
-            );
-            res.setHeader('Content-Type', 'text/plain');
-            res.status(200).json(filmes);
-            res.send( filmes).json();
+            // responseArr.push(`{ id: ${filme.id} / titulo: ${filme.titulo} /descricao: ${filme.descricao} / url: ${filme.url} /br}`);     
+            responseArr.push(filme);
         }
+        console.log("filmes:", responseArr);
+        res.setHeader('Content-Type', 'application/json');
+        // res.send( responseArr);
+        res.json(responseArr);
+        return;
     })
 
     } catch (error) {
